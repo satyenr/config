@@ -140,7 +140,15 @@ autocmd BufWinLeave *.py setlocal foldexpr< foldmethod<<Paste>
 let g:SimpylFold_docstring_preview=1
 " PEP-8
 autocmd FileType python set ts=4 sts=4 sw=4 tw=79 et ai ff=unix
-
+" VirtualEnv support
+py << EOF
+import os
+import sys
+if 'VIRTUAL_ENV' in os.environ:
+    project_base_dir = os.environ['VIRTUAL_ENV']
+    activate_this = os.path.join(project_base_dir, 'bin/activate_this.py')
+    execfile(activate_this, dict(__file__=activate_this))
+EOF
 
 " ==========================================
 " Miscellaneous
