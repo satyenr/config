@@ -135,13 +135,40 @@ set incsearch
 map <F2> :let &background = (&background == 'dark' ? 'light' : 'dark') <CR>
 " Toggle line number display
 map <F3> :set number! <CR>
+" Toggle NerdTree pane
+nmap <F4> :NERDTreeToggle <CR>
 " Toggle paste mode
 set pastetoggle=<F5>
+" Toggle :set list
+map <F6> :set list! <CR>
+
 " Split pane navigation
 nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
+
+" Emacs binding for begin and end
+nnoremap <C-a> <home>
+nnoremap <C-e> <end>
+
+" Switch to shell
+nmap <C-d> :sh <CR>
+
+" Keep search matches in the middle of the window
+nnoremap n nzzzv
+nnoremap N Nzzzv
+
+" Turn off highlighting
+map <silent> \ :let @/="" <CR>
+
+" Use <Ctrl>+N/<Ctrl>+P to cycle through files:
+nnoremap <C-N> :next <CR>
+nnoremap <C-P> :prev <CR>
+
+" Suppress all spaces at end/beginning of lines
+nmap _s :%s/\s\+$//<CR>
+nmap _S :%s/^\s\+//<CR>
 
 " ==========================================
 " Python
