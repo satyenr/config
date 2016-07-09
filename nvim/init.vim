@@ -33,6 +33,7 @@ call plug#begin('~/.local/share/nvim/plugins')
 Plug 'scrooloose/nerdtree'
 Plug 'luochen1990/rainbow'
 Plug 'morhetz/gruvbox'
+Plug 'tmhedberg/SimpylFold'
 call plug#end()
 
 " ==========================================
@@ -43,6 +44,8 @@ filetype plugin indent on
 " Turn on syntax highlighting
 syntax on
 
+" Use UTF-8 by default
+set encoding=utf-8
 " Show line numbers
 set number
 " Show (partial) command in the last line of the screen
@@ -116,6 +119,22 @@ map <F2> :let &background = (&background == 'dark' ? 'light' : 'dark') <CR>
 map <F3> :set number! <CR>
 " Toggle paste mode
 set pastetoggle=<F5>
+" Split pane navigation
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
+
+" ==========================================
+" Python
+" ==========================================
+" Code folding
+autocmd BufWinEnter *.py setlocal foldexpr=SimpylFold(v:lnum) foldmethod=expr
+autocmd BufWinLeave *.py setlocal foldexpr< foldmethod<<Paste>
+let g:SimpylFold_docstring_preview=1
+" PEP-8
+autocmd FileType python set ts=4 sts=4 sw=4 tw=79 et ai ff=unix
+
 
 " ==========================================
 " Miscellaneous
