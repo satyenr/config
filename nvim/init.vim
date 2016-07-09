@@ -36,6 +36,9 @@ Plug 'morhetz/gruvbox'
 Plug 'tmhedberg/SimpylFold'
 Plug 'vim-scripts/indentpython.vim'
 Plug 'Valloric/YouCompleteMe'
+Plug 'scrooloose/syntastic'
+Plug 'nvie/vim-flake8'
+Plug 'jistr/vim-nerdtree-tabs'
 call plug#end()
 
 " ==========================================
@@ -61,6 +64,9 @@ set listchars=trail:-,tab:>-,eol:$
 " Autocomplete settings
 let g:ycm_autoclose_preview_window_after_completion=1
 map <leader>g  :YcmCompleter GoToDefinitionElseDeclaration<CR>
+
+" NERDTree settings
+let NERDTreeIgnore=['\.pyc$', '\~$']
 
 " Highlight trailing whitespaces - except while typing at the end of the line
 " Details can be found at http://vim.wikia.com/wiki/Highlight_unwanted_spaces
@@ -140,6 +146,10 @@ autocmd BufWinLeave *.py setlocal foldexpr< foldmethod<<Paste>
 let g:SimpylFold_docstring_preview=1
 " PEP-8
 autocmd FileType python set ts=4 sts=4 sw=4 tw=79 et ai ff=unix
+" Prettify Python code
+let python_highlight_all=1
+syntax on
+
 " VirtualEnv support
 py << EOF
 import os
