@@ -58,6 +58,10 @@ set ruler
 " Show non-printables correctly using 'set list'
 set listchars=trail:-,tab:>-,eol:$
 
+" Autocomplete settings
+let g:ycm_autoclose_preview_window_after_completion=1
+map <leader>g  :YcmCompleter GoToDefinitionElseDeclaration<CR>
+
 " Highlight trailing whitespaces - except while typing at the end of the line
 " Details can be found at http://vim.wikia.com/wiki/Highlight_unwanted_spaces
 highlight ExtraWhitespace ctermbg=darkgreen guibg=lightgreen
