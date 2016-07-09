@@ -64,6 +64,12 @@ set ruler
 " Use universal clipboard
 set clipboard=unnamed
 
+" Show curser line
+set cursorline
+
+" Always leave 4 lines above and below screen top/bottom
+set scrolloff=4
+
 " Show non-printables correctly using 'set list'
 set listchars=trail:-,tab:>-,eol:$
 
