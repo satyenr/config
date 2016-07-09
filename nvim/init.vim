@@ -61,6 +61,9 @@ set showcmd
 " Show line and column number in bottom right hand corner
 set ruler
 
+" Use universal clipboard
+set clipboard=unnamed
+
 " Show non-printables correctly using 'set list'
 set listchars=trail:-,tab:>-,eol:$
 
