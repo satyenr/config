@@ -66,7 +66,7 @@ autocmd InsertLeave * match ExtraWhitespace /\s\+$/
 autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
 
 " Use gruvbox theme
-colorscheme gruvbox
+" colorscheme gruvbox
 " Enable rainbow brackets
 let g:rainbow_active=1
 
