@@ -67,6 +67,9 @@ set clipboard=unnamed
 " Show curser line
 set cursorline
 
+" Respect modeline
+set modeline
+
 " Always leave 4 lines above and below screen top/bottom
 set scrolloff=4
 
