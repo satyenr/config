@@ -34,6 +34,8 @@ Plug 'scrooloose/nerdtree'
 Plug 'luochen1990/rainbow'
 Plug 'morhetz/gruvbox'
 Plug 'tmhedberg/SimpylFold'
+Plug 'vim-scripts/indentpython.vim'
+Plug 'Valloric/YouCompleteMe'
 call plug#end()
 
 " ==========================================
@@ -96,7 +98,7 @@ set indentkeys=!^F,o,O,<:>,0),0],0},=elif,=except,0#
 autocmd FileType make set noet ts=8
 autocmd FileType go set noet ts=4
 " For YAML files, let a tab mean 2 spaces
-autocmd FileType yaml set softtabstop=2 shiftwidth=2
+autocmd FileType yaml js html css set ts=2 sts=2 sw=2
 
 " ==========================================
 " Search
