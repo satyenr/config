@@ -71,9 +71,9 @@ autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "norm
 " Enable rainbow brackets
 let g:rainbow_active=1
 
-" ================================
+" ==========================================
 " Indentation Settings
-" ================================
+" ==========================================
 " Copy indent from current line when starting a new line
 set autoindent
 " Indent/unindent after open/close braces
@@ -96,9 +96,9 @@ autocmd FileType go set noet ts=4
 " For YAML files, let a tab mean 2 spaces
 autocmd FileType yaml set softtabstop=2 shiftwidth=2
 
-" ================================
+" ==========================================
 " Search
-" ================================
+" ==========================================
 " Case-insensitive search by default
 set ignorecase
 " Unless at least 1 letter is capitalized
