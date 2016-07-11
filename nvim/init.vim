@@ -32,16 +32,22 @@ set runtimepath+=~/.local/share/nvim
 call plug#begin('~/.local/share/nvim/plugins')
 Plug 'scrooloose/nerdtree'
 Plug 'luochen1990/rainbow'
-Plug 'morhetz/gruvbox'
 Plug 'tmhedberg/SimpylFold'
 Plug 'vim-scripts/indentpython.vim'
-Plug 'Valloric/YouCompleteMe'
 Plug 'scrooloose/syntastic'
 Plug 'nvie/vim-flake8'
 Plug 'jistr/vim-nerdtree-tabs'
 Plug 'kien/ctrlp.vim'
 Plug 'tpope/vim-fugitive'
+
+" Color schemes
+Plug 'altercation/vim-colors-solarized'
+Plug 'jnurmine/Zenburn'
+Plug 'morhetz/gruvbox'
+
+" Not working - to be investigated later
 " Plug 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
+" Plug 'Valloric/YouCompleteMe'
 call plug#end()
 
 " ==========================================
@@ -97,8 +103,6 @@ autocmd InsertLeave * match ExtraWhitespace /\s\+$/
 " when the mark is in the first line - that is the default starting position.
 autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
 
-" Use gruvbox theme
-" colorscheme gruvbox
 " Enable rainbow brackets
 let g:rainbow_active=1
 
