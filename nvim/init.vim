@@ -63,6 +63,7 @@ Plug 'nvie/vim-flake8'
 Plug 'jistr/vim-nerdtree-tabs'
 Plug 'kien/ctrlp.vim'
 Plug 'tpope/vim-fugitive'
+Plug 'scrooloose/nerdcommenter'
 
 " Color schemes
 Plug 'altercation/vim-colors-solarized'
