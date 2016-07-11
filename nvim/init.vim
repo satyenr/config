@@ -164,7 +164,7 @@ nnoremap <C-a> <home>
 nnoremap <C-e> <end>
 
 " Switch to shell
-nmap <C-d> :sh <CR>
+nmap <C-d> :term <CR>
 
 " Keep search matches in the middle of the window
 nnoremap n nzzzv
