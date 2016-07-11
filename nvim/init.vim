@@ -78,7 +78,7 @@ set listchars=trail:-,tab:>-,eol:$
 
 " Autocomplete settings
 let g:ycm_autoclose_preview_window_after_completion=1
-map <leader>g  :YcmCompleter GoToDefinitionElseDeclaration<CR>
+map <leader>g :YcmCompleter GoToDefinitionElseDeclaration<CR>
 
 " NERDTree settings
 let NERDTreeIgnore=['\.pyc$', '\~$']
@@ -193,7 +193,8 @@ let python_highlight_all=1
 syntax on
 
 " VirtualEnv support
-py << EOF
+if has('python')
+    py << EOF
 import os
 import sys
 if 'VIRTUAL_ENV' in os.environ:
@@ -201,6 +202,7 @@ if 'VIRTUAL_ENV' in os.environ:
     activate_this = os.path.join(project_base_dir, 'bin/activate_this.py')
     execfile(activate_this, dict(__file__=activate_this))
 EOF
+endif
 
 " ==========================================
 " Miscellaneous
