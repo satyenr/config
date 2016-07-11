@@ -21,6 +21,30 @@ silent function! NeoVim()
 endfunction
 
 " ==========================================
+" Vim Compatibility
+" ==========================================
+if !NeoVim()
+    " Use vim settings, not vi ones
+    " Must be first - changes other options
+    set nocompatible
+
+    " Avoid polluting home directory with dotfiles
+    " Create required directories
+    silent !mkdir -p ~/.local/share/vim > /dev/null 2>&1
+    silent !mkdir -p ~/.cache/vim > /dev/null 2>&1
+    " Store viminfo in cache directory
+    set viminfo+=n~/.cache/vim/viminfo
+    " Store netrwhist in cache directory
+    let g:netrw_home=expand('~/.cache/vim')
+
+    " Keep backup only while file is being written
+    set nobackup writebackup
+    " Stop the annoying beep
+    set visualbell t_vb=
+
+endif
+
+" ==========================================
 " Essentials
 " ==========================================
 let mapleader=' '
