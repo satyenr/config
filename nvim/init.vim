@@ -23,7 +23,7 @@ endfunction
 " ==========================================
 " Essentials
 " ==========================================
-let mapleader="<space>"
+let mapleader=' '
 
 " ==========================================
 " Plugins
@@ -85,6 +85,8 @@ let NERDTreeIgnore=['\.pyc$', '\~$']
 
 " Highlight trailing whitespaces - except while typing at the end of the line
 " Details can be found at http://vim.wikia.com/wiki/Highlight_unwanted_spaces
+" Does not work when any colorscheme is active. Need to find a workaround. The
+" one given at the link mentioned above link doesn't work.
 highlight ExtraWhitespace ctermbg=darkgreen guibg=lightgreen
 match ExtraWhitespace /\s\+\%#\@<!$/
 autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
@@ -178,6 +180,7 @@ nnoremap <C-P> :prev <CR>
 " Suppress all spaces at end/beginning of lines
 nmap _s :%s/\s\+$//<CR>
 nmap _S :%s/^\s\+//<CR>
+
 
 " ==========================================
 " Python
