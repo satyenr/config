@@ -1,4 +1,4 @@
-" vim: set sw=4 ts=4 sts=4 et tw=78
+" vim: set sw=4 ts=4 sts=4 et:
 
 " ==========================================
 " Function Definitions
@@ -19,6 +19,11 @@ endfunction
 silent function! NeoVim()
     return has('nvim')
 endfunction
+
+" ==========================================
+" Essentials
+" ==========================================
+let mapleader=' '
 
 " ==========================================
 " Vim Compatibility
@@ -45,11 +50,6 @@ if !NeoVim()
 endif
 
 " ==========================================
-" Essentials
-" ==========================================
-let mapleader=' '
-
-" ==========================================
 " Plugins
 " ==========================================
 set runtimepath+=~/.local/share/nvim
@@ -63,7 +63,6 @@ Plug 'nvie/vim-flake8'
 Plug 'jistr/vim-nerdtree-tabs'
 Plug 'kien/ctrlp.vim'
 Plug 'tpope/vim-fugitive'
-Plug 'scrooloose/nerdcommenter'
 
 " Color schemes
 Plug 'altercation/vim-colors-solarized'
@@ -78,34 +77,19 @@ call plug#end()
 " ==========================================
 " Appearance and Behaviour
 " ==========================================
-" Automatically detect file types
-filetype plugin indent on
-" Turn on syntax highlighting
-syntax on
-
-" Use UTF-8 by default
-set encoding=utf-8
-" Show line numbers
-set number
-" Show (partial) command in the last line of the screen
-set showcmd
-" Show line and column number in bottom right hand corner
-set ruler
-
-" Use universal clipboard
-set clipboard=unnamed
-
-" Show curser line
-set cursorline
-
-" Respect modeline
-set modeline
-
-" Always leave 4 lines above and below screen top/bottom
-set scrolloff=4
-
-" Show non-printables correctly using 'set list'
+filetype plugin indent on   " Automatically detect file types
+syntax on                   " Turn on syntax highlighting
+set encoding=utf-8          " Use UTF-8 by default
+set number                  " Show line numbers
+set showcmd                 " Show (partial) command in the last line of the screen
+set ruler                   " Show line and column number in bottom right hand corner
+set clipboard=unnamed       " Use universal clipboard
+set cursorline              " Show curser line
+set modeline                " Respect modeline
+set scrolloff=4             " Always leave 4 lines above and below screen top/bottom
 set listchars=trail:-,tab:>-,eol:$
+                            " Show non-printables correctly using 'set list'
+let g:rainbow_active=1      " Enable rainbow brackets
 
 " Autocomplete settings
 let g:ycm_autoclose_preview_window_after_completion=1
@@ -128,45 +112,33 @@ autocmd InsertLeave * match ExtraWhitespace /\s\+$/
 " when the mark is in the first line - that is the default starting position.
 autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
 
-" Enable rainbow brackets
-let g:rainbow_active=1
-
 " ==========================================
 " Indentation Settings
 " ==========================================
-" Copy indent from current line when starting a new line
-set autoindent
-" Indent/unindent after open/close braces
-set smartindent
-" Number of columns a tab counts. Affects how existing text is displayed
-set tabstop=4
-" Number of columns text is indented with the reindent operations
-set shiftwidth=4
-" Number of columns to use when Tab is pressed in insert mode
-set softtabstop=4
-" Replace tabs by spaces
-set expandtab
-" Round indent to multiple of 'shiftwidth'
-set shiftround
-" Don't indent to the left when pressing the # key
+set autoindent      " Copy indent from current line when starting a new line
+set smartindent     " Indent/unindent after open/close braces
+set tabstop=4       " Number of columns a tab counts - affects how existing text is displayed
+set shiftwidth=4    " Number of columns text is indented with the reindent operations
+set softtabstop=4   " Number of columns to use when Tab is pressed in insert mode
+set expandtab       " Replace tabs by spaces
+set shiftround      " Round indent to multiple of 'shiftwidth'
 set indentkeys=!^F,o,O,<:>,0),0],0},=elif,=except,0#
+                    " Don't indent to the left when pressing the # key
+
 " Always use tab character for Makefiles and Go
 autocmd FileType make set noet ts=8
 autocmd FileType go set noet ts=4
+
 " For YAML files, let a tab mean 2 spaces
 autocmd FileType yaml js html css set ts=2 sts=2 sw=2
 
 " ==========================================
 " Search
 " ==========================================
-" Case-insensitive search by default
-set ignorecase
-" Unless at least 1 letter is capitalized
-set smartcase
-" Highligh search results by default
-set hlsearch
-" Highlight search as you type
-set incsearch
+set ignorecase      " Case-insensitive search by default
+set smartcase       " Unless at least 1 letter is capitalized
+set hlsearch        " Highligh search results by default
+set incsearch       " Highlight search as you type
 
 " ==========================================
 " Key Bindings
@@ -218,8 +190,10 @@ nmap _S :%s/^\s\+//<CR>
 autocmd BufWinEnter *.py setlocal foldexpr=SimpylFold(v:lnum) foldmethod=expr
 autocmd BufWinLeave *.py setlocal foldexpr< foldmethod<<Paste>
 let g:SimpylFold_docstring_preview=1
+
 " PEP-8
 autocmd FileType python set ts=4 sts=4 sw=4 tw=79 et ai ff=unix
+
 " Prettify Python code
 let python_highlight_all=1
 syntax on
