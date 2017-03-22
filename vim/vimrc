@@ -104,7 +104,7 @@ set incsearch                   " Highlight search as you type
 
 " Miscelaneous ================================================================
 set viminfo+=n~/.cache/vim/viminfo          " Store viminfo in cache directory
-" let g:netrw_home='/u/raisa/.cache/vim'    " Store netrwhist in cache directory
+let g:netrw_home=expand('~/.cache/vim')     " Store netrwhist in cache directory
 
 " Convenient command to see the difference between the current buffer and the
 " file it was loaded from, thus the changes you made.
@@ -115,8 +115,5 @@ command DiffOrig vert new | set bt=nofile | r # | 0d_ | diffthis | wincmd p | di
 " (happens when dropping a file on gvim).
 " Also don't do it when the mark is in the first line, that is the default
 " position when opening a file.
-autocmd BufReadPost *
-\ if line("'\"") > 1 && line("'\"") <= line("$") |
-\   exe "normal! g`\"" |
-\ endif
+autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
 
