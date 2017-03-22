@@ -1,179 +1,110 @@
-" ================================
-" Essentials
-" ================================
-" Avoid polluting home directory with dotfiles
+" Directories ================================================================
 silent !mkdir -p ~/.local/share/vim > /dev/null 2>&1
 silent !mkdir -p ~/.cache/vim > /dev/null 2>&1
-" Use vim settings, not vi ones. Must be first - changes other options.
-set nocompatible
-" Define leader
-let mapleader='\'
-" Use colourful terminal
-set t_Co=256
 
-" ==================================
-" Vundle
-" ==================================
-" Don't load filetype specific plugins - required by Vundle
-filetype off
-" Set the runtime path to include Vundle
-set rtp+=~/.local/share/vim/bundle/Vundle.vim
 
-" Add Plugins - including Vundle itself
-call vundle#begin('~/.local/share/vim/bundle')
-Plugin 'VundleVim/Vundle.vim'
-Plugin 'majutsushi/tagbar'
-Plugin 'morhetz/gruvbox'
-Plugin 'scrooloose/nerdtree'
-Plugin 'scrooloose/syntastic'
-Plugin 'luochen1990/rainbow'
-Plugin 'terryma/vim-multiple-cursors'
-Plugin 'Raimondi/delimitMate'
-Plugin 'mkitt/tabline.vim'
-Plugin 'bling/vim-airline'
-Plugin 'fatih/vim-go'
-Plugin 'jceb/vim-orgmode'
-call vundle#end()
+" Essentials =================================================================
+set nocompatible	    " Break compatibility with vi
+set t_Co=256		    " 256 colour terminal
+let mapleader=' '	    " Map leader
 
-" Load filetype specific plugins
-filetype plugin indent on
 
-" ================================
-" Display Settings
-" ================================
-" Show (partial) command in the last line of the screen
-set showcmd
-" Show line and column number in bottom right hand corner
-set ruler
-" Turn on syntax highlighting
-syntax on
-" Print line numbers in front of each line
-set number
-" Keep backup only while file is being written
-set nobackup writebackup
-" Stop the annoying beep
-set visualbell t_vb=
-" Always show status line
-set laststatus=2
-set statusline=%F
-" Show curser line
-set cursorline
-" Always leave 4 lines above and below screen top/bottom
-set scrolloff=4
-" Assume dark background (putty window)
-set background=dark
-" Use gruvbox theme
-let g:gruvbox_italic=1
-colorscheme gruvbox
-" Enable rainbow brackets
-let g:rainbow_active=1
-" Load filetype specific plugins
-filetype plugin indent on
-" Show tabs correctly when doing 'set list'
-set listchars=tab:>-,eol:$
-" Highlight trailing whitespaces
-highlight TrailingWhiteSpace ctermbg=red guibg=red
-match TrailingWhiteSpace /\s\+$/
+" Plugins ====================================================================
+set rtp+=~/.local/share/vim	    " Runtime path
 
-" ================================
-" Key Bindings
-" ================================
-" Set background to light
-map <F2> :let &background = ( &background == "dark"? "light" : "dark" ) <CR>
-" Toggle line number display
-map <F3> :set number! <CR>
-" Toggle NerdTree pane
-nmap <F4> :NERDTreeToggle <CR>
-" Toggle paste mode
-set pastetoggle=<F5>
-" Tagbar toggle
-nmap <F6> :TagbarToggle <CR>
-" Toggle :set list
-map <F7> :set list! <CR>
-" Toggle colou column
-map <F9> :let &cc = ( &cc == 0 ? 81 : 0 ) <CR>
-" Emacs binding for begin and end
-nnoremap <C-a> <home>
-nnoremap <C-e> <end>
-" Switch to shell
-nmap <C-d> :sh <CR>
-" Keep search matches in the middle of the window
-nnoremap n nzzzv
-nnoremap N Nzzzv
-" Turn off highlighting
-map <silent> \ :let @/="" <CR>
-" Use <Ctrl>+N/<Ctrl>+P to cycle through files:
-nnoremap <C-N> :next <CR>
-nnoremap <C-P> :prev <CR>
-" Suppress all spaces at end/beginning of lines
-nmap _s :%s/\s\+$//<CR>
-nmap _S :%s/^\s\+//<CR>
+call plug#begin('~/.local/share/vim/plugins')
+Plug 'scrooloose/nerdtree'
+Plug 'luochen1990/rainbow'
+Plug 'vim-scripts/indentpython.vim'
+Plug 'scrooloose/syntastic'
+Plug 'nvie/vim-flake8'
+Plug 'jistr/vim-nerdtree-tabs'
+Plug 'kien/ctrlp.vim'
+Plug 'tpope/vim-fugitive'
+Plug 'Valloric/YouCompleteMe', { 'for': 'python' }
+Plug 'fatih/vim-go', { 'for': 'go' }
+Plug 'powerline/powerline', { 'rtp': 'powerline/bindings/vim/' }
 
-" ================================
-" Indentation Settings
-" ================================
-" Copy indent from current line when starting a new line
-set autoindent
-" Indent/unindent after open/close braces
-set smartindent
-" Number of columns a tab counts. Affects how existing text is displayed
-set tabstop=4
-" Number of columns text is indented with the reindent operations
-set shiftwidth=4
-" Number of columns to use when Tab is pressed in insert mode
-set softtabstop=4
-" Replace tabs by spaces
-set expandtab
-" Round indent to multiple of 'shiftwidth'
-set shiftround
-" Don't indent to the left when pressing the # key
+" Color schemes
+Plug 'altercation/vim-colors-solarized'
+Plug 'jnurmine/Zenburn'
+Plug 'morhetz/gruvbox'
+call plug#end()
+
+
+" UI ==========================================================================
+filetype plugin indent on   " Load filetype specific plugins
+syntax on                   " Syntax highlighting
+set showcmd                 " Show (partial) command in the last line
+set ruler                   " Cursor coordinates
+set number                  " Line numbers
+set nobackup writebackup    " Keep backup only while file is being written
+set visualbell t_vb=        " Stop the annoying beep
+set laststatus=2            " Always show status line
+set statusline=%F           " Status line
+set cursorline              " Show curser line
+set scrolloff=4             " Leave 4 lines above/below screen top/bottom
+set background=dark         " Assume dark background
+set listchars=tab:>-,eol:$  " Show tabs correctly with 'set list'
+let g:rainbow_active=1      " Enable rainbow brackets
+highlight TrWhiteSpace ctermbg=red guibg=red
+match TrWhiteSpace /\s\+$/  " Highlight trailing whitespaces
+
+
+" Key Bindings ===============================================================
+set pastetoggle=<leader>p       " Toggle paste mode
+nmap <F2> :let &background = ( &background == "dark"? "light" : "dark" ) <CR>
+                                " Toggle background between light and dark
+nmap <F3> :set number! <CR>     " Toggle line numbers
+nmap <F4> :NERDTreeToggle <CR>  " Toggle NERDTree pane
+nmap <F6> :let &cc = ( &cc == 0 ? 81 : 0 ) <CR>
+                                " Toggle 80 character boundary
+nmap <F7> :set list! <CR>       " Toggle list mode
+nmap <C-d> :sh <CR>             " Switch to shell
+nmap <silent> <leader><esc> :let @/="" <CR>
+                                " Turn off highlighting
+nnoremap n nzzzv                " Keep matches in the middle of the window
+nnoremap N Nzzzv                " Keep matches in the middle of the window
+nnoremap <C-N> :next <CR>		" Next buffer
+nnoremap <C-P> :prev <CR>       " Previous buffer
+nmap <leader>s :%s/\s\+$//<CR>  " Remove traling whitespaces
+nmap <leader>S :%s/^\s\+//<CR>  " Remove leading whitespaces
+
+
+" Indentation =================================================================
+set autoindent      " New lines get indentation from current
+set smartindent     " Autoindent after braces
+set tabstop=4       " Columns per Tab - affects how existing text is displayed
+set shiftwidth=4    " Columns per Tab for reindent
+set softtabstop=4   " Columns per Tab in insert mode
+set expandtab       " Replace Tabs by Spaces
+set shiftround      " Round indent to multiple of 'shiftwidth'
 set indentkeys=!^F,o,O,<:>,0),0],0},=elif,=except,0#
-" Always use tab character for Makefiles
+                    " Don't indent to the left when pressing the # key
+
+
+" FileType Specific Settings =================================================
+autocmd FileType go set noet ts=4
 autocmd FileType make set noet ts=8
-" For YAML files, let a tab mean 2 spaces
 autocmd FileType yaml set softtabstop=2 shiftwidth=2
 
-" ================================
-" Typing
-" ================================
-" Allow backspacing over everything in insert mode
-set backspace=indent,eol,start
-" When a bracket is inserted, briefly jump to matching one
-set showmatch
-" Show match very briefly (tenths of sec)
-set matchtime=1
 
-" ================================
-" Searching
-" ================================
-" Case-insensitive search by default
-set ignorecase
-" Unless at least 1 letter is capitalized
-set smartcase
-" Highligh search results by default
-set hlsearch
-" Highlight search as you type
-set incsearch
+" Typing ======================================================================
+set backspace=indent,eol,start  " Backspace over everything in insert mode
+set showmatch                   " Briefly jump to matching brackets
+set matchtime=1                 " Show bracket match very briefly
 
-" =====================================
-" Miscelaneous
-" =====================================
-" Store viminfo in cache directory
-set viminfo+=n~/.cache/vim/viminfo
-" Store netrwhist in cache directory
-let g:netrw_home=expand('~/.cache/vim')
 
-" Configure syntax highlighting to work with GUI or xterm
-if ! has("gui_running")
-  set t_Co=8
-  if has("terminfo")
-    set t_Sf=^[[3%p1%dm
-    set t_Sb=^[[4%p1%dm
-  else
-    set t_Sf=^[[3%dm
-    set t_Sb=^[[4%dm
-  endif
-endif
+" Searching ===================================================================
+set ignorecase                  " Case-insensitive search
+set smartcase                   " Unless at least 1 letter is capitalized
+set hlsearch                    " Highligh search results
+set incsearch                   " Highlight search as you type
+
+
+" Miscelaneous ================================================================
+set viminfo+=n~/.cache/vim/viminfo          " Store viminfo in cache directory
+" let g:netrw_home='/u/raisa/.cache/vim'    " Store netrwhist in cache directory
 
 " Convenient command to see the difference between the current buffer and the
 " file it was loaded from, thus the changes you made.
