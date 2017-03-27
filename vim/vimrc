@@ -4,13 +4,13 @@ silent !mkdir -p ~/.cache/vim > /dev/null 2>&1
 
 
 " Essentials =================================================================
-set nocompatible	    " Break compatibility with vi
-set t_Co=256		    " 256 colour terminal
-let mapleader=' '	    " Map leader
+set nocompatible        " Break compatibility with vi
+set t_Co=256            " 256 colour terminal
+let mapleader=' '       " Map leader
 
 
 " Plugins ====================================================================
-set rtp+=~/.local/share/vim	    " Runtime path
+set rtp+=~/.local/share/vim     " Runtime path
 
 call plug#begin('~/.local/share/vim/plugins')
 Plug 'scrooloose/nerdtree'
@@ -65,7 +65,7 @@ nmap <silent> <leader><esc> :let @/="" <CR>
                                 " Turn off highlighting
 nnoremap n nzzzv                " Keep matches in the middle of the window
 nnoremap N Nzzzv                " Keep matches in the middle of the window
-nnoremap <C-N> :next <CR>		" Next buffer
+nnoremap <C-N> :next <CR>       " Next buffer
 nnoremap <C-P> :prev <CR>       " Previous buffer
 nmap <leader>s :%s/\s\+$//<CR>  " Remove traling whitespaces
 nmap <leader>S :%s/^\s\+//<CR>  " Remove leading whitespaces
