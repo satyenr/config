@@ -1,37 +1,5 @@
 ;; -*- mode: emacs-lisp -*-
 
-(defvar dotspacemacs/layers/core
-  "Core layers"
-  '(auto-completion
-    better-defaults
-    deft
-    emoji
-    git
-    helm
-    (org :variables org-enable-github-support t)
-    osx
-    shell
-    spell-checking
-    syntax-checking
-    version-control))
-
-(defvar dotspacemacs/layers/langs
-  "Language layers"
-  '(emacs-lisp
-    haskell
-    html
-    java
-    javascript
-    markdown
-    python
-    ruby
-    yaml
-    shell-scripts))
-
-(defvar dotspacemacs/layers/local
-  "Local layers"
-  '((config :location local)))
-
 (defun dotspacemacs/layers ()
   "Configuration layers"
   (setq-default
@@ -39,12 +7,10 @@
    dotspacemacs-enable-lazy-installation 'unused
    dotspacemacs-ask-for-lazy-installation t
    dotspacemacs-configuration-layer-path '()
-   dotspacemacs-configuration-layers (append dotspacemacs/layers/core
-                                             dotspacemacs/layers/langs
-                                             dotspacemacs/layers/local)
+   dotspacemacs-configuration-layers '((config :location local))
    dotspacemacs-additional-packages '()
    dotspacemacs-frozen-packages '()
-   dotspacemacs-excluded-packages '()
+   dotspacemacs-excluded-packages '(org-projectile)
    dotspacemacs-install-packages 'used-only))
 
 (defun dotspacemacs/init ()
@@ -56,7 +22,7 @@
    dotspacemacs-elpa-subdirectory nil
    dotspacemacs-editing-style 'vim
    dotspacemacs-verbose-loading nil
-   dotspacemacs-startup-banner 'random
+   dotspacemacs-startup-banner 'official
    dotspacemacs-startup-lists '((todos . 5)
                                 (agenda . 5)
                                 (recents . 5)
@@ -65,9 +31,6 @@
    dotspacemacs-scratch-mode 'text-mode
    dotspacemacs-themes '(spacemacs-dark
                          spacemacs-light
-                         zenburn
-                         doom-one
-                         doom-one-light
                          solarized-dark
                          solarized-light)
    dotspacemacs-colorize-cursor-according-to-state t
@@ -122,7 +85,7 @@
    dotspacemacs-persistent-server nil
    dotspacemacs-search-tools '("ag" "pt" "ack" "grep")
    dotspacemacs-default-package-repository nil
-   dotspacemacs-whitespace-cleanup trailing
+   dotspacemacs-whitespace-cleanup 'trailing
    ))
 
 (defun dotspacemacs/user-init ()
@@ -131,14 +94,4 @@
 
 (defun dotspacemacs/user-config ()
   "User configuration"
-  (setq deft-directory "~/Documents/Deft"
-        deft-extensions '("txt" "md" "org")
-        deft-recursive t)
-  (custom-set-faces
-   '(org-level-1 ((t (:inherit outline-1 :height 1.0))))
-   '(org-level-2 ((t (:inherit outline-2 :height 1.0))))
-   '(org-level-3 ((t (:inherit outline-3 :height 1.0))))
-   '(org-level-4 ((t (:inherit outline-4 :height 1.0))))
-   '(org-level-5 ((t (:inherit outline-5 :height 1.0))))
-   )
   )
