@@ -45,12 +45,9 @@
        snippets            ; my elves. They type so I don't have to
 
        :emacs
-       (dired            ; making dired pretty [functional]
-       ;;+ranger         ; bringing the goodness of ranger to dired
-       ;;+icons          ; colorful icons for dired-mode
-        )
-       electric          ; smarter, keyword-based electric-indent
-       vc                ; version-control and Emacs, sitting in a tree
+       (dired +ranger +icons)   ; making dired pretty and functional
+       electric                 ; smarter, keyword-based electric-indent
+       vc                       ; version-control via emacs
 
        :term
        ;;eshell            ; a consistent, cross-platform shell (WIP)
