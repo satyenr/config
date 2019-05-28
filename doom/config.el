@@ -13,3 +13,6 @@
 (setq org-journal-dir "~/Documents/Notes/journal")
 (setq org-journal-file-type 'yearly)
 (setq org-journal-file-format "%Y")
+
+;; markdown
+(remove-hook '+markdown-compile-functions #'+markdown-compile-marked)
